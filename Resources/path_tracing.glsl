@@ -45,7 +45,7 @@ uniform int uSamples;
 #define HALF_PI (PI / 2.0)
 #define FAR_DISTANCE 1000000.0
 
-#define MAX_DEPTH 5
+#define MAX_DEPTH 10
 #define SPHERE_COUNT 5
 #define BOX_COUNT 8
 #define TETRAHEDRON_COUNT 2
@@ -75,16 +75,16 @@ void InitializeScene()
     // Glass-like properties with different colors
     spheres[0].material.roughness = 0.0;
     spheres[1].material.roughness = 0.05;
-    spheres[2].material.roughness = 0.02;
+    spheres[2].material.roughness = 1.0;
     spheres[3].material.roughness = 0.1;
-    spheres[4].material.roughness = 0.0;
+    spheres[4].material.roughness = 1.0;
     
     // Translucent materials
     spheres[0].material.opacity = 0.9;
     spheres[1].material.opacity = 0.8;
-    spheres[2].material.opacity = 0.95;
+    spheres[2].material.opacity = 1;
     spheres[3].material.opacity = 0.7;
-    spheres[4].material.opacity = 0.0;
+    spheres[4].material.opacity = 1.0;
     
     // Various colors
     spheres[0].material.reflectance = vec3(0.1, 0.3, 0.9);  // Blue
@@ -211,14 +211,14 @@ void InitializeScene()
         cos(rotAngle1), 0.0, sin(rotAngle1),
         0.0, 1.0, 0.0,
         -sin(rotAngle1), 0.0, cos(rotAngle1)
-    );
+	    );
     
     tetrahedrons[0].v0 = tetra1Position + rotY1 * vec3(-scale1, -scale1, -scale1);
     tetrahedrons[0].v1 = tetra1Position + rotY1 * vec3(scale1, -scale1, -scale1);
     tetrahedrons[0].v2 = tetra1Position + rotY1 * vec3(0.0, scale1 * 2.0, 0.0);
     tetrahedrons[0].v3 = tetra1Position + rotY1 * vec3(0.0, -scale1, scale1);
-    tetrahedrons[0].material.roughness = 0.05;
-    tetrahedrons[0].material.opacity = 0.8;
+    tetrahedrons[0].material.roughness = 1.0;
+    tetrahedrons[0].material.opacity = 1.0;
     tetrahedrons[0].material.emmitance = vec3(0.0);
     tetrahedrons[0].material.reflectance = vec3(0.9, 0.9, 1.0); // Crystal blue
     
@@ -236,8 +236,8 @@ void InitializeScene()
     tetrahedrons[1].v1 = tetra2Position + rotY2 * vec3(scale2, -scale2, -scale2);
     tetrahedrons[1].v2 = tetra2Position + rotY2 * vec3(0.0, scale2 * 1.8, 0.0);
     tetrahedrons[1].v3 = tetra2Position + rotY2 * vec3(0.0, -scale2, scale2);
-    tetrahedrons[1].material.roughness = 0.0;
-    tetrahedrons[1].material.opacity = 0.7;
+    tetrahedrons[1].material.roughness = 1.0;
+    tetrahedrons[1].material.opacity = 1.0;
     tetrahedrons[1].material.emmitance = vec3(0.0);
     tetrahedrons[1].material.reflectance = vec3(0.9, 0.4, 0.1); // Amber color
 }
